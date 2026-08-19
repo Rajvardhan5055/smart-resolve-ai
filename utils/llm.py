@@ -17,10 +17,12 @@ def get_client():
 
 def ask_llm(prompt: str) -> str:
     c = get_client()
+
     response = c.chat.completions.create(
         model="llama-3.1-8b-instant",
         messages=[
             {"role": "user", "content": prompt}
         ]
     )
+
     return response.choices[0].message.content
